@@ -14,6 +14,11 @@ See the result at localhost3000.
 * Environment setup
 
 ### [Week2](https://webdev2.warsylewicz.ca/week2/assignment)
-* Create a React Component called "StudentInfo"
+* Create a component called "StudentInfo"
 * Edit root page to display the "StudentInfo"
 * Create week2/page
+
+### [Week3](https://webdev2.warsylewicz.ca/week3/assignment)
+* Create "item-list" component to define an array of items
+* Create "items" component to define the item structure: name, quantity, category
+* Render the info on week3/page
