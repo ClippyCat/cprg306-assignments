@@ -22,3 +22,10 @@ See the result at localhost3000.
 * Create "item-list" component to define an array of items
 * Create "items" component to define the item structure: name, quantity, category
 * Render the info on week3/page
+
+### [Week4](https://webdev2.warsylewicz.ca/week4/assignment)
+* Create NewItem component
+* Initialize State Variables (name, quantity, and category) along with their setter functions
+* Make a Form Submission Handler to create and log an item object, then reset to initial values
+* Create a form in the return statement
+* Render on week4/page
