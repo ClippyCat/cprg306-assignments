@@ -66,7 +66,7 @@ const items = [
 const ItemList = () => {
   return (
     <div>
-      <h2 className="text-xl font-semibold">Shopping List</h2>
+      <h2>Shopping List</h2>
       <ul>
         {items.map((item, index) => (
           <Item
