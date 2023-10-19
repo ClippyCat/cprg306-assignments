@@ -1,11 +1,21 @@
 import StudentInfo from '../app/StudentInfo';
+import Links from '../app/links';
+
+const links = [
+  { text: 'Week2', url: '/week2' }, // Corrected the typo here
+  { text: 'Week3', url: '/week3' }, // Corrected the typo here
+  { text: 'Week4', url: '/week4' },
+  { text: 'Week5', url: '/week5' }
+];
 
 const HomePage = () => {
   return (
-    <div>
+    <main>
       <h1>CPRG 306</h1>
       <StudentInfo />
-    </div>
+      <h2>Pages</h2>
+      <Links links={links} />
+    </main>
   );
 };
 
