@@ -5,10 +5,17 @@ import itemsData from './items.json';
 
 const ItemList = () => {
   const [sortBy, setSortBy] = useState('name');
-  const [grouped, setGrouped] = useState(false);
+  const [groupByCategory, setGroupByCategory] = useState(false);
 
-  // Sort the items based on the sortBy state variable
-  const sortedItems = [...itemsData].sort((a, b) => {
+  const toggleSortBy = (value) => {
+    setSortBy(value);
+  };
+
+  const toggleGroupByCategory = () => {
+    setGroupByCategory(!groupByCategory);
+  };
+
+  const sortedItems = itemsData.sort((a, b) => {
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
     } else if (sortBy === 'category') {
@@ -16,71 +23,42 @@ const ItemList = () => {
     }
   });
 
-  // Function to toggle grouping
-  const toggleGrouped = () => {
-    setGrouped(!grouped);
-  };
-
-  // Group the items by category and sort them alphabetically
-  const groupedItems = sortedItems.reduce((acc, item) => {
-    const category = item.category;
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-    acc[category].push(item);
-    return acc;
-  }, {});
-
-  // Render the Items
-  const renderItems = () => {
-    if (grouped) {
-      return Object.keys(groupedItems)
-        .sort()
-        .map((category) => (
-          <div key={category}>
-            <h2 className="text-xl font-semibold mt-4 mb-2 capitalize">{category}</h2>
-            {groupedItems[category].map((item) => (
-              <Item key={item.id} item={item} />
-            ))}
-          </div>
-        ));
-    } else {
-      return sortedItems.map((item) => (
-        <Item key={item.id} item={item} />
-      ));
-    }
-  };
+  // Group items by category
+  const groupedItems = groupByCategory
+    ? sortedItems.reduce((acc, item) => {
+        if (!acc[item.category]) {
+          acc[item.category] = [];
+        }
+        acc[item.category].push(item);
+        return acc;
+      }, {})
+    : { All: sortedItems };
 
   return (
     <div>
-      <div className="flex space-x-2 my-4">
+      <div>
         <button
-          className={`${
-            sortBy === 'name' ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          } px-4 py-2 rounded-md`}
-          onClick={() => setSortBy('name')}
+          onClick={() => toggleSortBy('name')}
+          style={{ backgroundColor: sortBy === 'name' ? 'lightblue' : 'white' }}
         >
           Sort by Name
         </button>
         <button
-          className={`${
-            sortBy === 'category' ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          } px-4 py-2 rounded-md`}
-          onClick={() => setSortBy('category')}
+          onClick={() => toggleSortBy('category')}
+          style={{ backgroundColor: sortBy === 'category' ? 'lightblue' : 'white' }}
         >
           Sort by Category
         </button>
-        <button
-          className={`${
-            grouped ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          } px-4 py-2 rounded-md`}
-          onClick={toggleGrouped}
-        >
-          {grouped ? 'Ungroup' : 'Group by Category'}
-        </button>
+        <button onClick={toggleGroupByCategory}>Group by Category</button>
       </div>
-
-      {renderItems()}
+      {Object.keys(groupedItems).map((category) => (
+        <div key={category}>
+          <h2 className="font-bold text-xl">{category}</h2>
+          {groupedItems[category].map((item) => (
+            <Item key={item.id} item={item} />
+          ))}
+        </div>
+      ))}
     </div>
   );
 };

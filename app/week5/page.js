@@ -1,6 +1,6 @@
 import ItemList from './item-list';
 
-const Week3Page = () => {
+const Week5Page = () => {
   return (
     <main>
       {/* You can add more styling classes here if needed */}
@@ -9,4 +9,4 @@ const Week3Page = () => {
   );
 };
 
-export default Week3Page;
+export default Week5Page;
