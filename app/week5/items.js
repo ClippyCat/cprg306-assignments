@@ -1,4 +1,6 @@
-const Item = ({ name, quantity, category }) => {
+const Item = ({ item }) => {
+  const { name, quantity, category } = item;
+
   return (
     <li>
       <div>

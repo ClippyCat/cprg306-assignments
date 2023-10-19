@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import Item from './items';
-import itemsData from './items.json';
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   const [sortBy, setSortBy] = useState('name');
   const [groupByCategory, setGroupByCategory] = useState(false);
 
@@ -15,7 +14,8 @@ const ItemList = () => {
     setGroupByCategory(!groupByCategory);
   };
 
-  const sortedItems = itemsData.sort((a, b) => {
+  // Create a copy of the 'items' prop to avoid mutation
+  const sortedItems = [...items].sort((a, b) => {
     if (sortBy === 'name') {
       return a.name.localeCompare(b.name);
     } else if (sortBy === 'category') {

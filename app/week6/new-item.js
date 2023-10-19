@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const NewItem = () => {
+const NewItem = ({ onAddItem }) => {
   const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState('produce');
@@ -15,9 +15,8 @@ const NewItem = () => {
       category,
     };
 
-    console.log(item);
-
-    alert(`Name: ${name}, Quantity: ${quantity}, Category: ${category}`);
+    // Call the onAddItem prop with the item object
+    onAddItem(item);
 
     // Reset state variables to their initial values
     setName('');
@@ -52,17 +51,7 @@ const NewItem = () => {
       <div>
         <label htmlFor="category">Category:</label>
         <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option value="produce">Produce</option>
-          <option value="dairy">Dairy</option>
-          <option value="bakery">Bakery</option>
-          <option value="meat">Meat</option>
-          <option value="frozen">Frozen Foods</option>
-          <option value="canned">Canned Goods</option>
-          <option value="dry">Dry Goods</option>
-          <option value="beverages">Beverages</option>
-          <option value="snacks">Snacks</option>
-          <option value="household">Household</option>
-          <option value="other">Other</option>
+          {/* ...options for categories ... */}
         </select>
       </div>
       <button type="submit">Submit</button>

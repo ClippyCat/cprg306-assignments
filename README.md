@@ -31,3 +31,10 @@ See the result at localhost3000.
 * Render on week4/page
 
 ### [Week5](https://webdev2.warsylewicz.ca/week5/assignment)
+* Use files from week3
+* Build a new ItemList Component
+* Sort the Items using JavaScript's sort function
+* Create radiobuttons to sort by name and category
+* add a third button to group the list by category.
+
+### [Week6](https://webdev2.warsylewicz.ca/week6/assignment)
