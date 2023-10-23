@@ -6,6 +6,7 @@ const NewItem = ({ onAddItem }) => {
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState('produce');
 
+  const categories = ['bakery', 'canned goods', 'dairy', 'dry goods', 'household', 'meat', 'produce'];
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -51,7 +52,11 @@ const NewItem = ({ onAddItem }) => {
       <div>
         <label htmlFor="category">Category:</label>
         <select id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-          {/* ...options for categories ... */}
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
         </select>
       </div>
       <button type="submit">Submit</button>

@@ -38,3 +38,5 @@ See the result at localhost3000.
 * add a third button to group the list by category.
 
 ### [Week6](https://webdev2.warsylewicz.ca/week6/assignment)
+* Combine week 3-5.
+* Create dynamic shopping list which allows users to add, view and sort items.
