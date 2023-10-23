@@ -10,4 +10,4 @@ const Week4Page = () => {
   );
 };
 
-export default Page;
+export default Week4Page;
