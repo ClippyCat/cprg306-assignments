@@ -5,7 +5,8 @@ const links = [
   { text: 'Week2', url: '/week2' }, // Corrected the typo here
   { text: 'Week3', url: '/week3' }, // Corrected the typo here
   { text: 'Week4', url: '/week4' },
-  { text: 'Week5', url: '/week5' }
+  { text: 'Week5', url: '/week5' },
+  { text: 'Week6', url: '/week6' }
 ];
 
 const HomePage = () => {
