@@ -1,8 +1,8 @@
-const Item = ({ item }) => {
+const Item = ({ item, onSelect }) => {
   const { name, quantity, category } = item;
 
   return (
-    <li>
+    <li onClick={() => onSelect(item)}>
       <div>
         <p>{name}</p>
         <p>{category}</p>

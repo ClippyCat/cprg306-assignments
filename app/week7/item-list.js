@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Item from './items';
 
-function ItemList({ items }) {
+function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
 
   // Create a copy of items to work with
@@ -77,14 +77,22 @@ function ItemList({ items }) {
               <h2 className="text-lg font-bold capitalize">{group.category}</h2>
               <ul>
                 {group.items.map((item, index) => (
-                  <Item key={index} item={item} />
+                  <Item
+                    key={index}
+                    item={item}
+                    onSelect={() => onItemSelect(item)}
+                  />
                 ))}
               </ul>
             </li>
           ))}
         {sortBy !== "groupCategory" &&
           sortedItems.map((item, index) => (
-            <Item key={index} item={item} />
+            <Item
+              key={index}
+              item={item}
+              onSelect={() => onItemSelect(item)}
+            />
           ))}
       </ul>
     </div>

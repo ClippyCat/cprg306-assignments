@@ -3,10 +3,14 @@ import React, { useState } from 'react';
 import ItemList from './item-list';
 import NewItem from './new-item';
 import itemsData from './items.json';
+import MealIdeas from './meal-ideas';
 
-const Week6Page = () => {
+const Week7Page = () => {
   // Initialize a state variable 'items' with data from items.json
   const [items, setItems] = useState(itemsData);
+  
+  // Initialize a state variable 'selectedItemName'
+  const [selectedItemName, setSelectedItemName] = useState('');
 
   // Create an event handler function to add a new item to 'items'
   const handleAddItem = (newItem) => {
@@ -15,14 +19,27 @@ const Week6Page = () => {
     setItems(updatedItems);
   };
 
+  // Create an event handler function to select an item from the list
+  const handleItemSelect = (item) => {
+    // Clean up the item name by removing the size and emoji
+    const cleanedItemName = item.name.split(',')[0].trim();
+    setSelectedItemName(cleanedItemName);
+  };
+
   return (
-    <main>
-      {/* Pass the 'handleAddItem' event handler to 'NewItem' component */}
-      <NewItem onAddItem={handleAddItem} />
-      {/* Pass the 'items' state to 'ItemList' component */}
-      <ItemList items={items} />
+    <main style={{ display: 'flex' }}>
+      <div>
+        {/* Pass the 'handleAddItem' event handler to 'NewItem' component */}
+        <NewItem onAddItem={handleAddItem} />
+        {/* Pass the 'items' state and 'handleItemSelect' to 'ItemList' component */}
+        <ItemList items={items} onItemSelect={handleItemSelect} />
+      </div>
+      <div>
+        {/* Pass the 'selectedItemName' state to 'MealIdeas' component as 'ingredient' prop */}
+        <MealIdeas ingredient={selectedItemName} />
+      </div>
     </main>
   );
 };
 
-export default Week6Page;
+export default Week7Page;
